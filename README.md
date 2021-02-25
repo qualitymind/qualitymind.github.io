@@ -1,0 +1,1 @@
+# qualitymind.github.io
