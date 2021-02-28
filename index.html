@@ -1,6 +1,42 @@
 <!DOCTYPE html>
-<h1> Hello World!</h1>
-<p>Authors of this site are
-  <a href="https://www.linkedin.com/in/opantsjoha/">Oleg Pantsjoha</a> and
-  <a href="https://www.linkedin.com/in/cakehurstryan/">Callum Akehurst-Ryan</a>
-</p>
+<head>
+  <script src="https://unpkg.com/force-graph"></script>
+  <style>
+    h1,p {text-align: center;}
+    #page {
+      max-width: 500px;
+      margin: auto;
+    }
+    </style>
+</head>
+<body>
+  <div id="page">
+    <h1 style="position: relative;"> Hello World!</h1>
+    <div id="graph">
+    </div>
+    <p>Authors of this site are
+      <a href="https://www.linkedin.com/in/opantsjoha/">Oleg Pantsjoha</a> and
+      <a href="https://www.linkedin.com/in/cakehurstryan/">Callum Akehurst-Ryan</a>
+    </p>
+  </div>
+  <script> 
+  fetch('./src/datasets/HarnessingTheAwesomePowersOfDiscipline&MindfulChaosDuringLockdownWFH.json').then(res => res.json()).then(data => {
+    const Graph = ForceGraph()
+    (document.getElementById('graph'))
+      .graphData(data)
+      .nodeId('id')
+      .nodeVal('val')
+      .nodeLabel('name')
+      .nodeAutoColorBy('group')
+      .onNodeClick(node => {
+        // Center/zoom on node
+        Graph.centerAt(node.x, node.y, 1000);
+        Graph.zoom(8, 2000);
+      })
+      .linkSource('source')
+      .linkTarget('target')
+      .width(500)
+      .height(500)
+  });
+  </script>
+</body>

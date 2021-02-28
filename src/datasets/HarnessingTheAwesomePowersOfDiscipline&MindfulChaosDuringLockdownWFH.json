@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    {"id": "blog", "name": "Harnessing the Awesome Powers of Discipline & Mindful Chaos during lockdown WFH", "group": 1},
+    {"id": "tldr", "name":"TL;DR", "group": 2},
+    {"id": "intro", "name":"Introduction", "group": 3}
+  ],
+  "links": [
+    {"source": "blog", "target": "tldr", "value": 1},
+    {"source": "blog", "target": "intro", "value": 2}
+  ]
+}
